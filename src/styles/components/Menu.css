@@ -1,0 +1,26 @@
+.menu {
+  position: fixed;
+  top: 4.25rem;
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid #bdbdbd;
+  background: #fff;
+  padding: 0 16.56rem;
+}
+.menu__wrapper {
+  height: 2.75rem;
+  display: flex;
+  align-items: center;
+}
+.menu__wrapper span {
+  height: 2.75rem;
+  color: #7209b7;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  border-bottom: 2px solid #7209b7;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
