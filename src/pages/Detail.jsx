@@ -13,7 +13,7 @@ import { useParams } from "react-router-dom";
 
 export default function Detail() {
   const { name } = useParams();
-  const [detailData, setDetailData] = useState(null);
+  const [detailData, setDetailData] = useState({});
 
   // 서버로부터 데이터 받아오기
   useEffect(() => {
@@ -45,9 +45,10 @@ export default function Detail() {
         <div className="detail__price">
           <span
             style={{
-              color: detailData.priceChange.startsWith("-")
-                ? "#1D66D7"
-                : "#D00000",
+              color:
+                detailData.priceChange && detailData.priceChange.startsWith("-")
+                  ? "#1D66D7"
+                  : "#D00000",
             }}
           >
             {detailData.currentPrice}
@@ -56,26 +57,31 @@ export default function Detail() {
             전일대비&nbsp;{" "}
             <b
               style={{
-                color: detailData.priceChange.startsWith("-")
-                  ? "#1D66D7"
-                  : "#D00000",
+                color:
+                  detailData.priceChange &&
+                  detailData.priceChange.startsWith("-")
+                    ? "#1D66D7"
+                    : "#D00000",
               }}
             >
-              {detailData.priceChange.startsWith("-")
+              {detailData.priceChange && detailData.priceChange.startsWith("-")
                 ? detailData.priceChange
                 : `+${detailData.priceChange}`}
             </b>
             &nbsp; |{" "}
             <b
               style={{
-                color: detailData.percentageChange.startsWith("-")
-                  ? "#1D66D7"
-                  : "#D00000",
+                color:
+                  detailData.priceChange &&
+                  detailData.percentageChange.startsWith("-")
+                    ? "#1D66D7"
+                    : "#D00000",
               }}
             >
               {" "}
               &nbsp;
-              {detailData.percentageChange.startsWith("-")
+              {detailData.priceChange &&
+              detailData.percentageChange.startsWith("-")
                 ? detailData.percentageChange
                 : `+${detailData.percentageChange}`}
             </b>

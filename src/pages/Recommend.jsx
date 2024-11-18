@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 // import recommendTest from "../data/recommendTest";
 
 export default function Recommend() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const navigate = useNavigate();
 
   // 서버로부터 데이터 받아오기
