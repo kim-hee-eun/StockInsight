@@ -18,6 +18,7 @@ export default function Recommend() {
     const fetchData = async () => {
       try {
         const response = await axios.get("http://localhost:3002/main");
+        console.log(response);
         setData(response.data);
       } catch (err) {
         console.log(err);
@@ -49,12 +50,10 @@ export default function Recommend() {
           <tr className="recommend__table-header">
             <th>종목명</th>
             <th>현재가</th>
-            <th>예상 수익률</th>
+            <th>예상 주가</th>
             <th>ROE</th>
-            <th>PER</th>
             <th>MACD 신호</th>
             <th>볼린저밴드 상태</th>
-            <th>거래량</th>
             <th>배당수익률</th>
           </tr>
         </thead>
@@ -62,29 +61,27 @@ export default function Recommend() {
           {data.map((item, index) => (
             <tr key={index} onClick={() => handleItemClick(item.name)}>
               <td>{item.name}</td>
-              <td>{item.currentPrice}</td>
-              <td>{item.expectedReturn}</td>
-              <td>{item.roe}</td>
-              <td>{item.per}</td>
+              <td>{item.currentPrice} KRW</td>
+              <td>{item.expectedReturn} KRW</td>
+              <td>{item.roe}%</td>
               <td>{item.macdSignal}</td>
               <td>{item.bollingerStatus}</td>
-              <td>{item.volume}</td>
-              <td>{item.dividendYield}</td>
+              <td>{item.dividendYield}%</td>
             </tr>
           ))}
         </tbody>
       </table>
       <div className="recommend__bottom">
         <div className="recommend__box">
-          <p>예상 수익률: 머신러닝 모델로 예측된 주가 상승 가능성</p>
+          {/* <p>예상 수익률: 머신러닝 모델로 예측된 주가 상승 가능성</p> */}
           <p>
             ROE (자기자본이익률): 회사가 자기자본으로 얼마나 수익을 냈는지
             나타냅니다.
           </p>
-          <p>
+          {/* <p>
             PER (주가수익비율): 주가가 수익에 비해 저평가/고평가 되었는지를
             판단하는 지표입니다.
-          </p>
+          </p> */}
           <p>MACD: 가격 추세의 변화를 분석해 매수·매도 신호를 제공합니다.</p>
           <p>
             볼린저 밴드: 주가 변동성을 기반으로 매수·매도 타이밍을 시사합니다.

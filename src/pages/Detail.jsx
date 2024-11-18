@@ -22,6 +22,7 @@ export default function Detail() {
         const response = await axios.get(
           `http://localhost:3002/detail/${name}`
         );
+        console.log(response);
         setDetailData(response.data);
       } catch (err) {
         console.error("Failed to fetch detail data:", err);
@@ -42,10 +43,42 @@ export default function Detail() {
       </div>
       <div className="detail__box">
         <div className="detail__price">
-          <span>{detailData.currentPrice}</span>
+          <span
+            style={{
+              color: detailData.priceChange.startsWith("-")
+                ? "#1D66D7"
+                : "#D00000",
+            }}
+          >
+            {detailData.currentPrice}
+          </span>
           <span>
-            전일대비&nbsp; <b>{detailData.priceChange}</b>&nbsp; |
-            <b> &nbsp;{detailData.percentageChange}</b>
+            전일대비&nbsp;{" "}
+            <b
+              style={{
+                color: detailData.priceChange.startsWith("-")
+                  ? "#1D66D7"
+                  : "#D00000",
+              }}
+            >
+              {detailData.priceChange.startsWith("-")
+                ? detailData.priceChange
+                : `+${detailData.priceChange}`}
+            </b>
+            &nbsp; |{" "}
+            <b
+              style={{
+                color: detailData.percentageChange.startsWith("-")
+                  ? "#1D66D7"
+                  : "#D00000",
+              }}
+            >
+              {" "}
+              &nbsp;
+              {detailData.percentageChange.startsWith("-")
+                ? detailData.percentageChange
+                : `+${detailData.percentageChange}`}
+            </b>
           </span>
         </div>
         <div className="detail__info">
@@ -68,7 +101,7 @@ export default function Detail() {
               {detailData.lowerLimit})
             </span>
             <span>
-              | 거래대금&nbsp; <b>{detailData.transactionAmount}</b>
+              {/* | 거래대금&nbsp; <b>{detailData.transactionAmount}</b> */}
             </span>
           </div>
         </div>
@@ -76,7 +109,7 @@ export default function Detail() {
       <div className="detail__graph">
         <span>선차트</span>
       </div>
-      <img src={detailData.imagePath} alt="선차트" />
+      <img className="detail__img" src={detailData.imagePath} alt="선차트" />
     </div>
   );
 }

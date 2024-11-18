@@ -69,7 +69,7 @@
   padding: 1.15rem 1.56rem 0.75rem 1.56rem;
 }
 .detail__price span:first-of-type {
-  color: #1d66d7;
+  color: #000;
   font-size: 1.75rem;
   font-style: normal;
   font-weight: 700;
@@ -84,7 +84,7 @@
   line-height: 1.5rem; /* 200% */
 }
 .detail__price span:nth-of-type(2) b {
-  color: #1d66d7;
+  color: #000;
   font-size: 0.875rem;
   font-style: normal;
   font-weight: 700;
@@ -145,4 +145,9 @@
   font-style: normal;
   font-weight: 600;
   line-height: 1.5rem;
+}
+
+.detail__img {
+  width: 70%;
+  height: auto;
 }
